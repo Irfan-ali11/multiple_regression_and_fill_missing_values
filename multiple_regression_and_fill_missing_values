@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+data=pd.read_csv("multiple_regression.csv")
+
+import math
+m=data.bedrooms.median()
+data.bedrooms=data.bedrooms.fillna(m)
+df_price=data.price
+L=linear_model.LinearRegression()
+L.fit(data.drop("price",axis="columns"),df_price)
+L.predict([[2000,2,10]])
